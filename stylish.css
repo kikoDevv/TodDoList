@@ -21,7 +21,6 @@ form {
     font-size: 1.7rem;
     justify-content: center;
     margin: 15px 0;
-    padding: 0.8rem;
     width: 100%;
 }
 
@@ -63,7 +62,13 @@ form button {
     min-width: 100px;
 }
 
-
+#editBox{
+    display: flex;
+    padding-bottom: 10px;
+    padding-left:10px;
+    justify-content: space-between;
+    padding-right:10px;
+}
 /* här nere finns kodar till toDoList boxen*/
 #todoList {
     display: grid;
@@ -73,12 +78,28 @@ form button {
     padding: 30px;
 
 }
+.taborBtn{
+    background-color: red;
+    border-bottom-right-radius:20px;
+    border-top-right-radius:20px;
+    padding: 10px;
+}
+.gjortBtn{
+    background-color: rgb(241, 194, 25);
+    padding: 10px;
+    margin-left:auto
+}
+.done {
+    text-decoration: line-through;
+}
 
 .todoItem {
     display: flex;
-    padding: 7px;
+    /*justify-content: space-between;*/
+    padding-left: 10px;
+    font-size: 1.7rem;
     background-color: rgb(254, 254, 255);
-    border-radius: 10px;
+    border-radius: 20px;
     margin-bottom: 10px;
     margin-top: 10px;
     max-width: 100%;
