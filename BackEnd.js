@@ -1,7 +1,7 @@
 const inputText = document.getElementById("input");
 const addBtn = document.querySelector("#addBtn");
-let item = document.getElementById("item");
-let array = [];
+let items = document.getElementById("todoList");
+//let array = [];
 
 addBtn.addEventListener("click", function(event) {
     event.preventDefault();  // Förhindrar siduppdatering
@@ -9,9 +9,8 @@ addBtn.addEventListener("click", function(event) {
 });
 
 function läggTill(){
-    console.log("klicked!");
-    //item.innerText = inputText.value;
-    array.push(inputText.value);
-    item.innerHTML = array;
-    console.log(array);
+    const läggTill = document.createElement("li");
+    läggTill.textContent = inputText.value;
+    läggTill.classList.add("todoItem");
+    items.appendChild(läggTill);
 }
