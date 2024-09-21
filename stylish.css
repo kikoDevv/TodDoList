@@ -21,7 +21,7 @@ form {
     font-size: 1.7rem;
     justify-content: center;
     margin: 15px 0;
-    width: 100%;
+    width:500px;
 }
 
 form input {
@@ -70,12 +70,13 @@ form button {
     padding-right:10px;
 }
 /* här nere finns kodar till toDoList boxen*/
-#todoList {
+#listBox {
     display: grid;
-    background-color: #bdbbbe;
+    background-color: #fefcfe;
     border-radius: 20px;
     overflow: hidden;
     padding: 30px;
+    width: 500px;
 
 }
 .taborBtn{

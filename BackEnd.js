@@ -1,38 +1,22 @@
-const inputText = document.getElementById("input");
+//här länkar jag mina variablar på olika element i min html.
+const input = document.getElementById("input");
 const addBtn = document.querySelector("#addBtn");
-let items = document.getElementById("todoList");
-
-addBtn.addEventListener("click", function (event) {
-    event.preventDefault();  // Förhindrar siduppdatering
-    läggTill();
+const listBox = document.getElementById("form");
+//Här lyssnar jag på knappen, när knappen trycks kör jag följande block av kodar!
+addBtn.addEventListener("click", function (event){
+    if(input.value!==""){//ser till att input är inte tomt annars vi vill inte lägga något tompt i listan.
+        event.preventDefault(); //förnindrar att weblasaren refreshar.
+        let addItemTo = document.getElementById("listBox");// addItemTo är länkat till en Ul elemnt som ska vara som en background men innehålla childElement i sig. 
+        if (!addItemTo) { //ser till att dynamisk skapa loxBox element en gång bara när min kod körs. 
+            addItemTo = document.createElement("ul");
+            addItemTo.id = "listBox"; // Tilldelar ett id
+            listBox.appendChild(addItemTo); // Lägger till ul i DOMen 
+            console.log("listbox spawned");//loggar för att kolla om min kod har lyckades(: . 
+        }
+        const nyList=document.createElement("li");// skapar ny HTML element och länkar till NyList.
+        nyList.textContent=input.value;//lägger text innehåll för nyligen skaped HTML element som är länkat till input.
+        addItemTo.appendChild(nyList);// och till slut lägst det till addItemTo vilket försig är länkad till <ul element i min HTML.
+        console.log("doneeeeeeeeeee!");// konsol loggar för att se min kod har lyckades köra fram hit.
+    }
 });
 
-function läggTill() {
-    const läggTill = document.createElement("li");
-    läggTill.textContent = inputText.value;
-    läggTill.classList.add("todoItem");
-    if (inputText.value !== "") {
-        items.appendChild(läggTill);
-        //här gnereras gjort knappen.
-        
-        const gjortBtn = document.createElement("button");
-        gjortBtn.textContent = "done"
-        läggTill.appendChild(gjortBtn);
-        gjortBtn.classList.add("gjortBtn")
-        // event listener till gjort knappen.
-        gjortBtn.addEventListener("click", function(){
-            console.log("done klicked");
-            läggTill.classList.toggle("done");
-        });
-        //Här genereras ta bort knapp i värje ny element i todo list.
-        const tabortBtn = document.createElement("button");
-        tabortBtn.textContent = "ta bort";
-        läggTill.appendChild(tabortBtn);
-        tabortBtn.classList.add("taborBtn")
-        tabortBtn.addEventListener("click", function () {
-            items.removeChild(läggTill);
-        });
-    }
-    // tabort knappen ska vara här nere
-    inputText.value = "";
-}
