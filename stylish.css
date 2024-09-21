@@ -62,6 +62,10 @@ form button {
     min-width: 100px;
 }
 
+
+
+
+
 #editBox{
     display: flex;
     padding-bottom: 10px;
@@ -69,14 +73,16 @@ form button {
     justify-content: space-between;
     padding-right:10px;
 }
-/* här nere finns kodar till toDoList boxen*/
+/* här nere finns kodar till listboxen*/
 #listBox {
     display: grid;
+    align-content: space-between;
     background-color: #fefcfe;
     border-radius: 20px;
     overflow: hidden;
     padding: 30px;
     width: 500px;
+
 
 }
 .taborBtn{
@@ -93,15 +99,16 @@ form button {
 .done {
     text-decoration: line-through;
 }
-
-.todoItem {
+.nyList{
     display: flex;
-    /*justify-content: space-between;*/
-    padding-left: 10px;
-    font-size: 1.7rem;
-    background-color: rgb(254, 254, 255);
-    border-radius: 20px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    max-width: 100%;
+    justify-content: space-between;
+    background-color:#dadada;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.doneBtn{
+    display: flex;
+    background-color: red;
+    margin-right: auto;
 }
