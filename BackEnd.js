@@ -5,7 +5,7 @@ const listBox = document.getElementById("form");
 //Här lyssnar jag på knappen, när knappen trycks kör jag följande block av kodar!
 addBtn.addEventListener("click", function (event) {
     if (input.value !== "") {//ser till att input är inte tomt annars vi vill inte lägga något tompt i listan.
-        event.preventDefault(); //förnindrar att weblasaren refreshar.
+        event.preventDefault(); //förhindrar att weblasaren refreshar.
         let addItemTo = document.getElementById("listBox");// addItemTo är länkat till en Ul elemnt som ska vara som en background men innehålla childElement i sig. 
         if (!addItemTo) { //ser till att dynamisk skapa loxBox element en gång bara när min kod körs. 
             addItemTo = document.createElement("ul");
@@ -19,15 +19,14 @@ addBtn.addEventListener("click", function (event) {
         addItemTo.appendChild(nyList);// och till slut lägst det till addItemTo vilket försig är länkad till <ul element i min HTML.
         //här ska genereras två knapper för varje  nyList item som läggs till.
         const doneBtn = document.createElement("button");
-        doneBtn.textContent = "done";
+        doneBtn.innerHTML='<i class="material-icons">check_circle</i>';
         doneBtn.id ="doneBtn";
         nyList.appendChild(doneBtn);// ser till att knappen skapas i nyList men använder olika klass för syling.
         //Tabort knappen
         const tabortBtn = document.createElement("button");
-        tabortBtn.textContent = "Tabort";
-        
-        
-        
+        tabortBtn.innerHTML = '<i class="material-icons">delete</i>';
+        tabortBtn.id="tabortBtn";
+        nyList.appendChild(tabortBtn);  
         console.log("doneeeeeeeeeee!");// konsol loggar för att se min kod har lyckades köra fram hit.
     }
 });

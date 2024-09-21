@@ -21,7 +21,7 @@ form {
     font-size: 1.7rem;
     justify-content: center;
     margin: 15px 0;
-    width:500px;
+    width: 500px;
 }
 
 form input {
@@ -48,7 +48,7 @@ button {
 
 button:hover {
     cursor: pointer;
-    background-color:#747980;
+    background-color: #747980;
     color: white;
 }
 
@@ -62,53 +62,46 @@ form button {
     min-width: 100px;
 }
 
-
-
-
-
-#editBox{
+#editBox {
     display: flex;
     padding-bottom: 10px;
-    padding-left:10px;
+    padding-left: 10px;
     justify-content: space-between;
-    padding-right:10px;
+    padding-right: 10px;
 }
+
 /* här nere finns kodar till listboxen*/
 #listBox {
     display: grid;
     align-content: space-between;
     background-color: #fefcfe;
     border-radius: 20px;
-    overflow: hidden;
     padding: 30px;
     width: 500px;
+    overflow: hidden;
+}
 
-
-}
-.taborBtn{
-    background-color: red;
-    border-bottom-right-radius:20px;
-    border-top-right-radius:20px;
-    padding: 10px;
-}
-.gjortBtn{
-    background-color: rgb(241, 194, 25);
-    padding: 10px;
-    margin-left:auto
-}
-.done {
-    text-decoration: line-through;
-}
-.nyList{
-    display: flex;
-    justify-content: space-between;
-    background-color:#dadada;
-    padding: 10px;
+.nyList {
+    display:flex;
+    background-color: #dadada;
+    padding-left: 15px;
     margin-top: 5px;
     margin-bottom: 5px;
+    border-radius: 27px;
+    overflow: hidden;
+    max-width: 450px;
 }
-.doneBtn{
-    display: flex;
+
+#tabortBtn {
     background-color: red;
-    margin-right: auto;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 10px;
+    min-width: 10px;
+}
+
+#doneBtn {
+    background-color: rgb(251, 255, 133);
+    margin-left: auto;
+    padding: 10px;
 }
