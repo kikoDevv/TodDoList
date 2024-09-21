@@ -111,3 +111,7 @@ form button {
     background-color: #747980;
     color: rgb(255, 247, 16);
 }
+.done{
+    text-decoration: line-through;
+    color: rgb(255, 243, 18);
+}

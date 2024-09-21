@@ -14,7 +14,7 @@ addBtn.addEventListener("click", function (event) {
             console.log("listbox spawned");//loggar för att kolla om min kod har lyckades(: . 
         }
         const nyList = document.createElement("li");// skapar ny HTML element och länkar till NyList.
-        nyList.textContent = input.value;//lägger text innehåll för nyligen skaped HTML element som är länkat till input.
+        nyList.textContent = input.value.trim();//lägger text innehåll för nyligen skaped HTML element som är länkat till input.
         nyList.classList.add("nyList"); //lägger till class till elementen för att kunna styla det sen i css.
         addItemTo.appendChild(nyList);// och till slut lägst det till addItemTo vilket försig är länkad till <ul element i min HTML.
         //här ska genereras två knapper för varje  nyList item som läggs till.
@@ -26,7 +26,20 @@ addBtn.addEventListener("click", function (event) {
         const tabortBtn = document.createElement("button");
         tabortBtn.innerHTML = '<i class="material-icons">delete</i>';
         tabortBtn.id="tabortBtn";
-        nyList.appendChild(tabortBtn);  
+        nyList.appendChild(tabortBtn);
+        //Här lyssnar jag på tabortBtn för klicks, om tabortBtn trycks så körs kodeblock/function som tar bort nylist från addItemTo.
+        tabortBtn.addEventListener("click", function(){
+            addItemTo.removeChild(nyList);
+            console.log("delete har gåt igenom!!!!")
+        });
+        //Lyssnar för klicks på doneBtn, om det händer byts class id på nyList till class "done" vilket strycker på texten för sig.
+        doneBtn.addEventListener("click", function(){
+            nyList.classList.toggle("done");
+        });
+
+
+
+
         console.log("doneeeeeeeeeee!");// konsol loggar för att se min kod har lyckades köra fram hit.
     }
 });
