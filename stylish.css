@@ -93,14 +93,21 @@ form button {
     overflow: hidden;
 }
 #tabortBtn {
-    background-color: red;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
     padding: 10px;
 }
-
+#tabortBtn:hover{
+    cursor: pointer;
+    background-color: #747980;
+    color: rgb(255, 2, 2);
+}
 #doneBtn {
-    background-color: rgb(251, 255, 133);
     margin-left: auto;
     padding: 10px;
+}
+#doneBtn:hover{
+    cursor: pointer;
+    background-color: #747980;
+    color: rgb(255, 247, 16);
 }
