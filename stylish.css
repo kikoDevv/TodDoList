@@ -83,21 +83,20 @@ form button {
 
 .nyList {
     display:flex;
+    font-size:20px;
+    align-items: center;
     background-color: #dadada;
     padding-left: 15px;
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 27px;
     overflow: hidden;
-    max-width: 450px;
 }
-
 #tabortBtn {
     background-color: red;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
     padding: 10px;
-    min-width: 10px;
 }
 
 #doneBtn {
