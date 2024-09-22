@@ -99,6 +99,7 @@ form button {
     margin-bottom: 5px; /* Yttre marginal nertill */
     border-radius: 27px; /* Rundade hörn */
     overflow: hidden; /* Döljer överflödigt innehåll */
+    cursor:default;
 }
 
 /* Styling för "Ta bort"-knappen */
@@ -136,25 +137,43 @@ form button {
 
 /* Styling för informationsrutan */
 .infoDiv {
-    display: flex; /* Flexbox-layout */
+    background-color: #d9dde2;
+    display:flex;
     justify-content: center; /* Centrerar innehållet horisontellt */
+    max-width:290px;
+    max-height: 30px;
+    margin-left: 110px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    cursor:none;
 }
 
 /* Styling för p-element som visar statusinfo */
 .total {
-    padding: 8px; /* Inre marginal */
-    margin-right: 2px; /* Liten marginal till höger */
-    background-color: #d4f1ff; /* Bakgrundsfärg */
+    padding: 8px;
+    margin-right: 2px;
+    color: white;
+    cursor: none;
 }
 
 /* Specifik styling för det p-element som visar totalantalet uppgifter */
 #totalTodo {
-    background-color: #c1c4c7; /* Bakgrundsfärg */
-    border-top-left-radius: 20px; /* Rundar vänstra hörn upptill */
+    color: #1a150e;
+    cursor:default;
+    font-family: 'Work Sans', sans-serif;
 }
 
 /* Specifik styling för det p-element som visar antal klara uppgifter */
 #totalDone {
-    background-color: #c1c4c7; /* Bakgrundsfärg */
-    border-top-right-radius: 20px; /* Rundar högra hörn upptill */
+    color: #1a150e;
+    cursor:default;
+    font-family: 'Work Sans', sans-serif;
+}
+#shutDown{
+    background-color: red;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 50px;
 }

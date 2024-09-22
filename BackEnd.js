@@ -6,14 +6,17 @@ let addItemTo = document.getElementById("listBox"); // Ul-element som ska inneh�
 
 //här lyssnar jag på addBtn efter klick. När användaren klickar på knappen "addBtn" körs följande kod:
 addBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // Förhindrar att sidan laddas om när man trycker på knappen.
     if (input.value !== "") { // Kontroll för att säkerställa att användaren inte lämnar inputfältet tomt, annars det behövs inte läggas nogåt list.
-        event.preventDefault(); // Förhindrar att sidan laddas om när man trycker på knappen.
         let ItemsTodo; // Variabel för att hålla antalet uppgifter i listan.
         // Lyssnar efter alla klickhändelser på sidan för att uppdatera ItemsTodo.
         document.addEventListener("click", function() {
             ItemsTodo = addItemTo.childElementCount; // Räknar antal child-element (li) i ul-elementet (todo-listan).
+            //här säger jag om det inte finns något i todo list så refresha page och allt startas från början.
+            if(ItemsTodo==0){
+                location.reload();
+            };
         });
-
         // Skapar ul-elementet för uppgifterna om det inte redan finns. plus några div ellement för background.
         if (!addItemTo) {
             // Skapar en div för att visa statusinformation om listan (t.ex. antal uppgifter kvar).
@@ -31,6 +34,18 @@ addBtn.addEventListener("click", function (event) {
                 totalTodo.textContent = "Task kvar: " + ItemsTodo; // Uppdaterar texten med antal uppgifter kvar.
             });
             infoDiv.appendChild(totalTodo); // Lägger till totalTodo i infoDiv (div-elementet för status).
+            
+            const shutDownBtn=document.createElement("button");
+            shutDownBtn.id="shutDown";
+            shutDownBtn.innerHTML = '<i class="material-icons">power_settings_new</i>';
+            infoDiv.appendChild(shutDownBtn);
+            shutDownBtn.addEventListener("click", function(){
+                location.reload();
+            });
+
+
+
+
 
             // Skapar ett p-element som visar hur många uppgifter som är markerade som klara.
             let totalDone = document.createElement("p");
@@ -79,7 +94,6 @@ addBtn.addEventListener("click", function (event) {
         doneBtn.addEventListener("click", function () {
             nyList.classList.toggle("done"); // Lägger till eller tar bort klassen "done" för att stryka över texten.
         });
-
         console.log("done!"); // Loggar ett meddelande i konsolen för att veta att min kod lyckades köra hit.
     }
 });
