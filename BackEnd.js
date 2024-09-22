@@ -7,7 +7,9 @@ addBtn.addEventListener("click", function (event) {
     if (input.value !== "") {//ser till att input är inte tomt annars vi vill inte lägga något tompt i listan.
         event.preventDefault(); //förhindrar att weblasaren refreshar.
         let addItemTo = document.getElementById("listBox");// addItemTo är länkat till en Ul elemnt som ska vara som en background men innehålla childElement i sig. 
-        if (!addItemTo) { //ser till att dynamisk skapa loxBox element en gång bara när min kod körs. 
+        if (!addItemTo) { //ser till att dynamisk skapa listBox och det ska skapas bara en gång, när vi har något i vår lista. 
+            //skapar en div element inne i div id=form.
+
             addItemTo = document.createElement("ul");
             addItemTo.id = "listBox"; // Tilldelar ett id
             listBox.appendChild(addItemTo); // Lägger till ul i DOMen 

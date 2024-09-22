@@ -115,3 +115,6 @@ form button {
     text-decoration: line-through;
     color: rgb(255, 243, 18);
 }
+#info{
+    background-color: red;
+}
