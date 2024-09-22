@@ -1,138 +1,160 @@
+/* Nollställer marginaler, padding och box-modellen för alla element */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Inställningar för body, centrerar innehåll och sätter bakgrundsfärg */
 body {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Work Sans', sans-serif;
-    min-height: 100vh;
-    padding-top: 3%;
-    background-image: linear-gradient(100deg, #d4f1ff, #ffffff);
-    color: #1a150e;
-    transition: 0.3s linear;
+    align-items: center; /* Centrerar barn-elementen vertikalt */
+    display: flex; /* Flexbox för att hantera layouten */
+    flex-direction: column; /* Lägger alla element i en kolumn */
+    font-family: 'Work Sans', sans-serif; /* Definierar font */
+    min-height: 100vh; /* Gör så att body täcker hela höjden av viewporten */
+    padding-top: 3%; /* Lägger till lite padding på toppen */
+    background-image: linear-gradient(100deg, #d4f1ff, #ffffff); /* Bakgrundsgradient */
+    color: #1a150e; /* Textfärg */
+    transition: 0.3s linear; /* Jämn övergång vid förändring */
 }
 
+/* Inställningar för form-elementet, centrerar och justerar storleken */
 form {
-    display: flex;
-    font-size: 1.7rem;
-    justify-content: center;
-    margin: 15px 0;
-    width: 500px;
+    display: flex; /* Använder flexbox för att lägga input och knapp i rad */
+    font-size: 1.7rem; /* Fontstorlek */
+    justify-content: center; /* Centrerar form-elementet */
+    margin: 15px 0; /* Marginal runt formuläret */
+    width: 500px; /* Fast bredd */
 }
 
+/* Inställningar för inputfältet */
 form input {
-    padding: 10px;
-    font-size: 17px;
-    border: none;
-    outline: none;
-    border-top-left-radius: 17px;
-    border-bottom-left-radius: 17px;
-    max-width: 500px;
-    transition: background-color 200ms ease-in-out;
-    width: 100%;
+    padding: 10px; /* Inre marginal */
+    font-size: 17px; /* Textstorlek */
+    border: none; /* Tar bort standardram */
+    outline: none; /* Tar bort fokusram */
+    border-top-left-radius: 17px; /* Rundar vänstra hörn upptill */
+    border-bottom-left-radius: 17px; /* Rundar vänstra hörn nertill */
+    max-width: 500px; /* Maximal bredd */
+    transition: background-color 200ms ease-in-out; /* Jämn övergång för bakgrundsfärg */
+    width: 100%; /* Tar upp hela tillgängliga bredden */
 }
 
+/* När användaren håller musen över inputfältet */
 form input:hover {
-    cursor: text;
+    cursor: text; /* Byter till textmarkör */
 }
 
+/* Allmän styling för alla knappar */
 button {
-    border: none;
-    outline: none;
-    transition: box-shadow 200ms ease, background-color 200ms ease-in-out;
+    border: none; /* Tar bort knappens kantlinje */
+    outline: none; /* Tar bort fokusramen */
+    transition: box-shadow 200ms ease, background-color 200ms ease-in-out; /* Övergång för skugga och bakgrundsfärg */
 }
 
+/* Styling för knapp vid hover */
 button:hover {
-    cursor: pointer;
-    background-color: #747980;
-    color: white;
+    cursor: pointer; /* Visar pekaren som hand när musen är över knappen */
+    background-color: #747980; /* Ändrar bakgrundsfärg vid hover */
+    color: white; /* Ändrar textfärg till vit */
 }
 
-/* style till sparKnappen här */
-
+/* Specifik styling för knappen i formuläret */
 form button {
-    padding: 10px;
-    font-size: 17px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    min-width: 100px;
+    padding: 10px; /* Inre marginal */
+    font-size: 17px; /* Textstorlek */
+    border-top-right-radius: 15px; /* Rundar högra hörn upptill */
+    border-bottom-right-radius: 15px; /* Rundar högra hörn nertill */
+    min-width: 100px; /* Minsta bredd på knappen */
 }
 
+/* Justerar layout för redigeringsrutan */
 #editBox {
-    display: flex;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    justify-content: space-between;
-    padding-right: 10px;
+    display: flex; /* Flexbox-layout */
+    padding-bottom: 10px; /* Padding i botten */
+    padding-left: 10px; /* Padding till vänster */
+    justify-content: space-between; /* Fördelar innehållet med jämnt utrymme */
+    padding-right: 10px; /* Padding till höger */
 }
 
-/* här nere finns kodar till listboxen*/
+/* Styling för listBox (listans container) */
 #listBox {
-    display: grid;
-    align-content: space-between;
-    background-color: #fefcfe;
-    border-radius: 20px;
-    padding: 30px;
-    width: 500px;
-    overflow: hidden;
+    display: grid; /* Använder grid-layout för att placera elementen */
+    align-content: space-between; /* Jämnt fördelad vertikalt */
+    background-color: #fefcfe; /* Bakgrundsfärg */
+    border-radius: 20px; /* Rundar hörnen */
+    padding: 30px; /* Inre marginal */
+    width: 500px; /* Fast bredd */
+    overflow: hidden; /* Döljer överflödigt innehåll */
 }
 
+/* Styling för varje ny uppgift i listan */
 .nyList {
-    display:flex;
-    font-size:20px;
-    align-items: center;
-    background-color: #dadada;
-    padding-left: 15px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 27px;
-    overflow: hidden;
+    display: flex; /* Flexbox-layout för att hålla knappar och text i rad */
+    font-size: 20px; /* Textstorlek */
+    align-items: center; /* Vertikal centrering */
+    background-color: #dadada; /* Bakgrundsfärg för listobjekt */
+    padding-left: 15px; /* Inre marginal till vänster */
+    margin-top: 5px; /* Yttre marginal upptill */
+    margin-bottom: 5px; /* Yttre marginal nertill */
+    border-radius: 27px; /* Rundade hörn */
+    overflow: hidden; /* Döljer överflödigt innehåll */
 }
+
+/* Styling för "Ta bort"-knappen */
 #tabortBtn {
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 10px;
+    border-bottom-right-radius: 20px; /* Rundar högra hörnet nertill */
+    border-top-right-radius: 20px; /* Rundar högra hörnet upptill */
+    padding: 10px; /* Inre marginal */
 }
-#tabortBtn:hover{
-    cursor: pointer;
-    background-color: #747980;
-    color: rgb(255, 2, 2);
+
+/* Ändrar utseendet på "Ta bort"-knappen vid hover */
+#tabortBtn:hover {
+    cursor: pointer; /* Byter muspekaren till en hand */
+    background-color: #747980; /* Ändrar bakgrundsfärg */
+    color: rgb(255, 2, 2); /* Ändrar textfärgen till röd */
 }
+
+/* Styling för "Klar"-knappen */
 #doneBtn {
-    margin-left: auto;
-    padding: 10px;
+    margin-left: auto; /* Flyttar knappen till höger i flexbox */
+    padding: 10px; /* Inre marginal */
 }
-#doneBtn:hover{
-    cursor: pointer;
-    background-color: #747980;
-    color: rgb(255, 247, 16);
+
+/* Ändrar utseendet på "Klar"-knappen vid hover */
+#doneBtn:hover {
+    cursor: pointer; /* Byter muspekaren till en hand */
+    background-color: #747980; /* Ändrar bakgrundsfärg */
+    color: rgb(255, 247, 16); /* Ändrar textfärgen till gul */
 }
-/* här skapar en style klass för gjorda task i listan */
-.done{
-    text-decoration: line-through;
-    color: rgb(255, 243, 18);
+
+/* Styling för uppgifter som är markerade som gjorda */
+.done {
+    text-decoration: line-through; /* Stryker över texten */
+    color: rgb(255, 243, 18); /* Ändrar textfärgen till gul */
 }
-/* här stylar lite infodiv element */
-.infoDiv{
-    display: flex;
-    justify-content: center;
+
+/* Styling för informationsrutan */
+.infoDiv {
+    display: flex; /* Flexbox-layout */
+    justify-content: center; /* Centrerar innehållet horisontellt */
 }
-/*styling till p element till info listan */
-.total{
-    padding: 8px;
-    margin-right: 2px;
-    background-color: #d4f1ff;
+
+/* Styling för p-element som visar statusinfo */
+.total {
+    padding: 8px; /* Inre marginal */
+    margin-right: 2px; /* Liten marginal till höger */
+    background-color: #d4f1ff; /* Bakgrundsfärg */
 }
-/* styling till border-radius för olika kanter*/
-#totalTodo{
-    background-color: #c1c4c7;
-    border-top-left-radius: 20px;
+
+/* Specifik styling för det p-element som visar totalantalet uppgifter */
+#totalTodo {
+    background-color: #c1c4c7; /* Bakgrundsfärg */
+    border-top-left-radius: 20px; /* Rundar vänstra hörn upptill */
 }
-#totalDone{
-    background-color: #c1c4c7;
-    border-top-right-radius: 20px;
+
+/* Specifik styling för det p-element som visar antal klara uppgifter */
+#totalDone {
+    background-color: #c1c4c7; /* Bakgrundsfärg */
+    border-top-right-radius: 20px; /* Rundar högra hörn upptill */
 }

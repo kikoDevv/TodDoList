@@ -1,84 +1,85 @@
-//här länkar jag mina variablar på olika element i min html.
-const input = document.getElementById("input");
-const addBtn = document.querySelector("#addBtn");
-const listBox = document.getElementById("form");
-let addItemTo = document.getElementById("listBox");// addItemTo är länkat till en Ul elemnt som ska vara som en background men innehålla childElement i sig. 
+// Hämtar referenser till olika HTML-element i dokumentet.
+const input = document.getElementById("input"); // Inputfält där användaren skriver to do uppgifter.
+const addBtn = document.querySelector("#addBtn"); // Knappen som lägger till nya uppgifter.
+const listBox = document.getElementById("form"); // Behållare där hela listan och statusinfo ska finnas.
+let addItemTo = document.getElementById("listBox"); // Ul-element som ska innehålla listan med uppgifter.
 
-
-
-//Här lyssnar jag på knappen, när knappen trycks kör jag följande block av kodar!
+//här lyssnar jag på addBtn efter klick. När användaren klickar på knappen "addBtn" körs följande kod:
 addBtn.addEventListener("click", function (event) {
-    if (input.value !== "") {//ser till att input är inte tomt annars vi vill inte lägga något tompt i listan.
-        event.preventDefault(); //förhindrar att weblasaren refreshar.
-        let ItemsTodo;
-        //här lyssnar jag på hela dom efter klickar för att uppdatera min ItemsTodo.
-        document.addEventListener("click", function(){
-            ItemsTodo=addItemTo.childElementCount;
+    if (input.value !== "") { // Kontroll för att säkerställa att användaren inte lämnar inputfältet tomt, annars det behövs inte läggas nogåt list.
+        event.preventDefault(); // Förhindrar att sidan laddas om när man trycker på knappen.
+        let ItemsTodo; // Variabel för att hålla antalet uppgifter i listan.
+        // Lyssnar efter alla klickhändelser på sidan för att uppdatera ItemsTodo.
+        document.addEventListener("click", function() {
+            ItemsTodo = addItemTo.childElementCount; // Räknar antal child-element (li) i ul-elementet (todo-listan).
         });
+
+        // Skapar ul-elementet för uppgifterna om det inte redan finns. plus några div ellement för background.
         if (!addItemTo) {
-            //här skapar jag en div element som innehåller status info om listan.
+            // Skapar en div för att visa statusinformation om listan (t.ex. antal uppgifter kvar).
             const infoDiv = document.createElement("div");
-            infoDiv.classList.add("infoDiv");
-            listBox.appendChild(infoDiv)
-            //här skapar jag en några p tag för innehålla info om listan.
-            //let istället för konst, för att kunna ändra innehållet sen.
+            infoDiv.classList.add("infoDiv"); // Lägger till en CSS-klass för att kunna styla div-elementet.
+            listBox.appendChild(infoDiv); // Lägger till div-elementet i listBox (form-elementet).
+
+            // Skapar ett p-element som visar hur många uppgifter som finns kvar att göra.
             let totalTodo = document.createElement("p");
             totalTodo.classList.add("total");
-            totalTodo.id = "totalTodo";
-            //här lyssnar jag på hela dom efter klick för att updatera min listans status info.
-            document.addEventListener("click", function(){
-                totalTodo.textContent = "Task kvar: "+ItemsTodo;
+            totalTodo.id = "totalTodo"; // Ger elementet ett id för att kunna uppdatera textinnehållet senare.
+            
+            // Uppdaterar statusinformationen när användaren klickar på något på sidan.
+            document.addEventListener("click", function() {
+                totalTodo.textContent = "Task kvar: " + ItemsTodo; // Uppdaterar texten med antal uppgifter kvar.
             });
-            infoDiv.appendChild(totalTodo);
-            //total done i todo listan.
-            let totalDone=document.createElement("p");
+            infoDiv.appendChild(totalTodo); // Lägger till totalTodo i infoDiv (div-elementet för status).
+
+            // Skapar ett p-element som visar hur många uppgifter som är markerade som klara.
+            let totalDone = document.createElement("p");
             totalDone.classList.add("total");
-            totalDone.id="totalDone";
-            document.addEventListener("click", function(){
+            totalDone.id = "totalDone"; // Ger elementet ett id för att uppdatera antalet klara uppgifter.
+            
+            // Lyssnar efter klick och uppdaterar antalet klara uppgifter (li med klassen "done").
+            document.addEventListener("click", function() {
                 let dn;
-                dn = document.querySelectorAll("li.done");
-                totalDone.textContent="Task gjort: "+dn.length;
+                dn = document.querySelectorAll("li.done"); // Hittar alla li-element med klassen "done".
+                totalDone.textContent = "Task gjort: " + dn.length; // Uppdaterar texten med antal klara uppgifter.
             });
-
-
-
-
-            infoDiv.appendChild(totalDone);            
-            //ser till att dynamisk skapa listBox och det ska skapas bara en gång, när vi har något i vår lista. 
+            infoDiv.appendChild(totalDone); // Lägger till totalDone i infoDiv.
+            
+            // Skapar ul-elementet för todo-listan om det inte redan finns.
             addItemTo = document.createElement("ul");
-            addItemTo.id = "listBox"; // Tilldelar ett id
-            listBox.appendChild(addItemTo); // Lägger till ul i DOMen 
+            addItemTo.id = "listBox"; // Ger ul-elementet ett id för att referera till det senare.
+            listBox.appendChild(addItemTo); // Lägger till ul-elementet i DOM-strukturen.
         }
-        const nyList = document.createElement("li");// skapar ny HTML element och länkar till NyList.
-        nyList.textContent = input.value.trim();//lägger text innehåll för nyligen skaped HTML element som är länkat till input.
-        nyList.classList.add("nyList"); //lägger till class till elementen för att kunna styla det sen i css.
-        addItemTo.appendChild(nyList);// och till slut lägst det till addItemTo vilket försig är länkad till <ul element i min HTML.
-        input.value="";
-        //här ska genereras två knapper för varje  nyList item som läggs till.
+
+        // Skapar ett nytt li-element för att representera en ny uppgift.
+        const nyList = document.createElement("li");
+        nyList.textContent = input.value.trim(); // Hämtar texten från inputfältet och lägger till den i li-elementet.
+        nyList.classList.add("nyList"); // Lägger till en CSS-klass för styling av li-elementet.
+        addItemTo.appendChild(nyList); // Lägger till det nya li-elementet i ul (todo-listan).
+        input.value = ""; // Rensar inputfältet efter att uppgiften har lagts till.
+
+        // Skapar en knapp för att markera uppgiften som klar (med en ikon).
         const doneBtn = document.createElement("button");
-        doneBtn.innerHTML = '<i class="material-icons">check_circle</i>';
-        doneBtn.id = "doneBtn";
-        nyList.appendChild(doneBtn);// ser till att knappen skapas i nyList men använder olika klass för syling.
-        //Tabort knappen
+        doneBtn.innerHTML = '<i class="material-icons">check_circle</i>'; // HTML för ikonen "check_circle".
+        doneBtn.id = "doneBtn"; // Ger knappen ett id för att kunna identifiera den.
+        nyList.appendChild(doneBtn); // Lägger till knappen i det nya li-elementet.
+
+        // Skapar en knapp för att ta bort uppgiften (med en ikon).
         const tabortBtn = document.createElement("button");
-        tabortBtn.innerHTML = '<i class="material-icons">delete</i>';
-        tabortBtn.id = "tabortBtn";
-        nyList.appendChild(tabortBtn);
-        //Här lyssnar jag på tabortBtn för klicks, om tabortBtn trycks så körs kodeblock/function som tar bort nylist från addItemTo.
+        tabortBtn.innerHTML = '<i class="material-icons">delete</i>'; // HTML för ikonen "delete".
+        tabortBtn.id = "tabortBtn"; // Ger knappen ett id för att kunna identifiera den.
+        nyList.appendChild(tabortBtn); // Lägger till knappen i det nya li-elementet.
+
+        // Lyssnar efter klick på "Ta bort"-knappen och tar bort uppgiften från listan.
         tabortBtn.addEventListener("click", function () {
-            addItemTo.removeChild(nyList);
+            addItemTo.removeChild(nyList); // Tar bort li-elementet (uppgiften) från ul (todo-listan).
         });
-        //Lyssnar för klicks på doneBtn, om det händer byts class id på nyList till class "done" vilket strycker på texten för sig.
+
+        // Lyssnar efter klick på "Klar"-knappen och markerar/avmarkerar uppgiften som klar.
         doneBtn.addEventListener("click", function () {
-            nyList.classList.toggle("done");
+            nyList.classList.toggle("done"); // Lägger till eller tar bort klassen "done" för att stryka över texten.
         });
 
-
-
-
-
-
-
-        console.log("done!");// konsol loggar för att se min kod har lyckades köra fram hit.
+        console.log("done!"); // Loggar ett meddelande i konsolen för att veta att min kod lyckades köra hit.
     }
 });
