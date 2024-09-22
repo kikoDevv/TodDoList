@@ -17,13 +17,13 @@ addBtn.addEventListener("click", function (event) {
             let totalTodo = document.createElement("p");
             totalTodo.classList.add("total");
             totalTodo.id = "totalTodo";
-            totalTodo.textContent = "Antal kvar: 00";
+            totalTodo.textContent = "Antal kvar:00";
             infoDiv.appendChild(totalTodo);
             //total done i todo listan.
             let totalDone=document.createElement("p");
             totalDone.classList.add("total");
             totalDone.id="totalDone";
-            totalDone.textContent="Antal gjorde: 00"
+            totalDone.textContent="Antal gjort:00"
             infoDiv.appendChild(totalDone);            
             //ser till att dynamisk skapa listBox och det ska skapas bara en gång, när vi har något i vår lista. 
             addItemTo = document.createElement("ul");
@@ -35,6 +35,7 @@ addBtn.addEventListener("click", function (event) {
         nyList.textContent = input.value.trim();//lägger text innehåll för nyligen skaped HTML element som är länkat till input.
         nyList.classList.add("nyList"); //lägger till class till elementen för att kunna styla det sen i css.
         addItemTo.appendChild(nyList);// och till slut lägst det till addItemTo vilket försig är länkad till <ul element i min HTML.
+        input.value="";
         //här ska genereras två knapper för varje  nyList item som läggs till.
         const doneBtn = document.createElement("button");
         doneBtn.innerHTML = '<i class="material-icons">check_circle</i>';

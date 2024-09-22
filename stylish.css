@@ -129,10 +129,10 @@ form button {
 }
 /* styling till border-radius för olika kanter*/
 #totalTodo{
-    background-color: red;
+    background-color: #c1c4c7;
     border-top-left-radius: 20px;
 }
 #totalDone{
-    background-color: red;
+    background-color: #c1c4c7;
     border-top-right-radius: 20px;
 }
