@@ -2,11 +2,18 @@
 const input = document.getElementById("input");
 const addBtn = document.querySelector("#addBtn");
 const listBox = document.getElementById("form");
+let addItemTo = document.getElementById("listBox");// addItemTo är länkat till en Ul elemnt som ska vara som en background men innehålla childElement i sig. 
+
+
+
 //Här lyssnar jag på knappen, när knappen trycks kör jag följande block av kodar!
 addBtn.addEventListener("click", function (event) {
     if (input.value !== "") {//ser till att input är inte tomt annars vi vill inte lägga något tompt i listan.
         event.preventDefault(); //förhindrar att weblasaren refreshar.
-        let addItemTo = document.getElementById("listBox");// addItemTo är länkat till en Ul elemnt som ska vara som en background men innehålla childElement i sig. 
+        let ItemsTodo;
+        document.addEventListener("click", function(){
+            ItemsTodo=addItemTo.childElementCount;
+        });
         if (!addItemTo) {
             //här skapar jag en div element som innehåller status info om listan.
             const infoDiv = document.createElement("div");
@@ -17,13 +24,17 @@ addBtn.addEventListener("click", function (event) {
             let totalTodo = document.createElement("p");
             totalTodo.classList.add("total");
             totalTodo.id = "totalTodo";
-            totalTodo.textContent = "Antal kvar:00";
+            //här lyssnar jag på hela dom efter klick för att updatera min listans status info.
+            document.addEventListener("click", function(){
+                totalTodo.textContent = "Antal kvar:"+ItemsTodo;
+                console.log("items to do:", ItemsTodo)
+            });
             infoDiv.appendChild(totalTodo);
             //total done i todo listan.
             let totalDone=document.createElement("p");
             totalDone.classList.add("total");
             totalDone.id="totalDone";
-            totalDone.textContent="Antal gjort:00"
+            totalDone.textContent="Antal gjort:00";
             infoDiv.appendChild(totalDone);            
             //ser till att dynamisk skapa listBox och det ska skapas bara en gång, när vi har något i vår lista. 
             addItemTo = document.createElement("ul");
@@ -36,6 +47,11 @@ addBtn.addEventListener("click", function (event) {
         nyList.classList.add("nyList"); //lägger till class till elementen för att kunna styla det sen i css.
         addItemTo.appendChild(nyList);// och till slut lägst det till addItemTo vilket försig är länkad till <ul element i min HTML.
         input.value="";
+        //här lysnar jag för klicks i hela dom för, sedan räknar antal li element i ul.
+        
+
+
+
         //här ska genereras två knapper för varje  nyList item som läggs till.
         const doneBtn = document.createElement("button");
         doneBtn.innerHTML = '<i class="material-icons">check_circle</i>';
@@ -55,6 +71,7 @@ addBtn.addEventListener("click", function (event) {
         doneBtn.addEventListener("click", function () {
             nyList.classList.toggle("done");
         });
+
 
 
 
