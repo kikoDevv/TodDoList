@@ -11,6 +11,7 @@ addBtn.addEventListener("click", function (event) {
     if (input.value !== "") {//ser till att input är inte tomt annars vi vill inte lägga något tompt i listan.
         event.preventDefault(); //förhindrar att weblasaren refreshar.
         let ItemsTodo;
+        //här lyssnar jag på hela dom efter klickar för att uppdatera min ItemsTodo.
         document.addEventListener("click", function(){
             ItemsTodo=addItemTo.childElementCount;
         });
@@ -26,32 +27,33 @@ addBtn.addEventListener("click", function (event) {
             totalTodo.id = "totalTodo";
             //här lyssnar jag på hela dom efter klick för att updatera min listans status info.
             document.addEventListener("click", function(){
-                totalTodo.textContent = "Antal kvar:"+ItemsTodo;
-                console.log("items to do:", ItemsTodo)
+                totalTodo.textContent = "Task kvar: "+ItemsTodo;
             });
             infoDiv.appendChild(totalTodo);
             //total done i todo listan.
             let totalDone=document.createElement("p");
             totalDone.classList.add("total");
             totalDone.id="totalDone";
-            totalDone.textContent="Antal gjort:00";
+            document.addEventListener("click", function(){
+                let dn;
+                dn = document.querySelectorAll("li.done");
+                totalDone.textContent="Task gjort: "+dn.length;
+            });
+
+
+
+
             infoDiv.appendChild(totalDone);            
             //ser till att dynamisk skapa listBox och det ska skapas bara en gång, när vi har något i vår lista. 
             addItemTo = document.createElement("ul");
             addItemTo.id = "listBox"; // Tilldelar ett id
             listBox.appendChild(addItemTo); // Lägger till ul i DOMen 
-            console.log("listbox spawned");//loggar för att kolla om min kod har lyckades(: . 
         }
         const nyList = document.createElement("li");// skapar ny HTML element och länkar till NyList.
         nyList.textContent = input.value.trim();//lägger text innehåll för nyligen skaped HTML element som är länkat till input.
         nyList.classList.add("nyList"); //lägger till class till elementen för att kunna styla det sen i css.
         addItemTo.appendChild(nyList);// och till slut lägst det till addItemTo vilket försig är länkad till <ul element i min HTML.
         input.value="";
-        //här lysnar jag för klicks i hela dom för, sedan räknar antal li element i ul.
-        
-
-
-
         //här ska genereras två knapper för varje  nyList item som läggs till.
         const doneBtn = document.createElement("button");
         doneBtn.innerHTML = '<i class="material-icons">check_circle</i>';
@@ -65,7 +67,6 @@ addBtn.addEventListener("click", function (event) {
         //Här lyssnar jag på tabortBtn för klicks, om tabortBtn trycks så körs kodeblock/function som tar bort nylist från addItemTo.
         tabortBtn.addEventListener("click", function () {
             addItemTo.removeChild(nyList);
-            console.log("delete har gåt igenom!!!!")
         });
         //Lyssnar för klicks på doneBtn, om det händer byts class id på nyList till class "done" vilket strycker på texten för sig.
         doneBtn.addEventListener("click", function () {
@@ -78,6 +79,6 @@ addBtn.addEventListener("click", function (event) {
 
 
 
-        console.log("doneeeeeeeeeee!");// konsol loggar för att se min kod har lyckades köra fram hit.
+        console.log("done!");// konsol loggar för att se min kod har lyckades köra fram hit.
     }
 });
