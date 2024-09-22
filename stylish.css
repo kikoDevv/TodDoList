@@ -111,10 +111,28 @@ form button {
     background-color: #747980;
     color: rgb(255, 247, 16);
 }
+/* här skapar en style klass för gjorda task i listan */
 .done{
     text-decoration: line-through;
     color: rgb(255, 243, 18);
 }
-#info{
+/* här stylar lite infodiv element */
+.infoDiv{
+    display: flex;
+    justify-content: center;
+}
+/*styling till p element till info listan */
+.total{
+    padding: 8px;
+    margin-right: 2px;
+    background-color: #d4f1ff;
+}
+/* styling till border-radius för olika kanter*/
+#totalTodo{
     background-color: red;
+    border-top-left-radius: 20px;
+}
+#totalDone{
+    background-color: red;
+    border-top-right-radius: 20px;
 }
