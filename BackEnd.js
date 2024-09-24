@@ -3,11 +3,10 @@ const input = document.getElementById("input"); // Inputfält där användaren s
 const addBtn = document.querySelector("#addBtn"); // Knappen som lägger till nya uppgifter.
 const listBox = document.getElementById("form"); // Behållare där hela listan och statusinfo ska finnas.
 let addItemTo = document.getElementById("listBox"); // Ul-element som ska innehålla listan med uppgifter.
-
 //här lyssnar jag på addBtn efter klick. När användaren klickar på knappen "addBtn" körs följande kod:
 addBtn.addEventListener("click", function (event) {
     event.preventDefault(); // Förhindrar att sidan laddas om när man trycker på knappen.
-    if (input.value !== "") { // Kontroll för att säkerställa att användaren inte lämnar inputfältet tomt, annars det behövs inte läggas nogåt list.
+    if (input.value.length !== 0) { // Kontroll för att säkerställa att användaren inte lämnar inputfältet tomt, annars det behövs inte läggas nogåt list.
         let ItemsTodo; // Variabel för att hålla antalet uppgifter i listan.
         // Lyssnar efter alla klickhändelser på sidan för att uppdatera ItemsTodo.
         document.addEventListener("click", function() {
@@ -95,5 +94,9 @@ addBtn.addEventListener("click", function (event) {
             nyList.classList.toggle("done"); // Lägger till eller tar bort klassen "done" för att stryka över texten.
         });
         console.log("done!"); // Loggar ett meddelande i konsolen för att veta att min kod lyckades köra hit.
+    }else{
+        //här säger jag om input är tumt då byta title text till error medelande.
+        let titleText=document.getElementById("titleText");
+        titleText.textContent="Oj, Skriv något förts!";
     }
 });
