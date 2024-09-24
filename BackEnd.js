@@ -3,8 +3,8 @@ const input = document.getElementById("input"); // Inputfält där användaren s
 const addBtn = document.querySelector("#addBtn"); // Knappen som lägger till nya uppgifter.
 const listBox = document.getElementById("form"); // Behållare där hela listan och statusinfo ska finnas.
 let addItemTo = document.getElementById("listBox"); // Ul-element som ska innehålla listan med uppgifter.
-let felmedelande = document.getElementById("titleText");
-let todoList = []; // En array som lagrar alla uppgifter.
+const felmedelande = document.getElementById("titleText");
+const todoList = []; // En array som lagrar alla uppgifter.
 
 // Här lyssnar jag på addBtn efter klick. När användaren klickar på knappen "addBtn" körs följande kod:
 addBtn.addEventListener("click", function (event) {
@@ -22,7 +22,7 @@ addBtn.addEventListener("click", function (event) {
         });
 
         // Skapa en uppgift som objekt och lägg till i arrayen
-        let newTask = {
+        const newTask = {
             text: input.value.trim(),
             done: false // Startar som icke-avklarad
         };
@@ -36,7 +36,7 @@ addBtn.addEventListener("click", function (event) {
             listBox.appendChild(infoDiv); // Lägger till div-elementet i listBox (form-elementet).
 
             // Skapar ett p-element som visar hur många uppgifter som finns kvar att göra.
-            let totalTodo = document.createElement("p");
+            const totalTodo = document.createElement("p");
             totalTodo.classList.add("total");
             totalTodo.id = "totalTodo"; // Ger elementet ett id för att kunna uppdatera textinnehållet senare.
             
@@ -95,7 +95,7 @@ addBtn.addEventListener("click", function (event) {
         // Lyssnar efter klick på Tabor knappen och tar bort uppgiften från listan.
         tabortBtn.addEventListener("click", function () {
             addItemTo.removeChild(nyList); // Tar bort li-elementet (uppgiften) från ul (todo-listan).
-            let index = todoList.indexOf(newTask); // Hitta indexet i arrayen
+            const index = todoList.indexOf(newTask); // Hitta indexet i arrayen
             if (index > -1) {
                 todoList.splice(index, 1); // Ta bort från arrayen
             }
