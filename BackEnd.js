@@ -11,6 +11,7 @@ addBtn.addEventListener("click", function (event) {
     event.preventDefault(); // Förhindrar att sidan laddas om när man trycker på knappen.
     if (input.value.length !== 0) { // Kontroll för att säkerställa att användaren inte lämnar inputfältet tomt.
         felmedelande.textContent="Let's Do This!";
+        felmedelande.classList.remove("error");
         let ItemsTodo; // Variabel för att hålla antalet uppgifter i listan.
 
         // Lyssnar efter alla klickhändelser på sidan för att uppdatera ItemsTodo.
@@ -110,5 +111,11 @@ addBtn.addEventListener("click", function (event) {
     } else {
         // Här säger jag om input är tomt då byter jag title text till ett error-meddelande.
         felmedelande.textContent = "Oj, skriv något först!";
+        felmedelande.classList.add("error");
+
+        setTimeout(function(){
+            felmedelande.classList.remove("error");
+            felmedelande.textContent = "Let's Do This!"
+        }, 2000);
     }
 });

@@ -100,6 +100,10 @@ form button {
     border-radius: 27px; /* Rundade hörn */
     overflow: hidden; /* Döljer överflödigt innehåll */
     cursor:default;
+
+    animation-name: slideUp, fadeIn;
+    animation-duration: 0.5s;
+    transition-timing-function: ease-in;
 }
 
 /* Styling för "Ta bort"-knappen */
@@ -132,7 +136,7 @@ form button {
 /* Styling för uppgifter som är markerade som gjorda */
 .done {
     text-decoration: line-through; /* Stryker över texten */
-    color: rgb(255, 243, 18); /* Ändrar textfärgen till gul */
+    color: grey; /* Ändrar textfärgen till gul */
 }
 
 /* Styling för informationsrutan */
@@ -176,4 +180,38 @@ form button {
     padding-top: 0px;
     padding-bottom: 0px;
     border-radius: 50px;
+}
+/* animation och fade in till lister*/
+@keyframes slideUp {
+    from{
+        transform: translateY(30px);
+    }
+
+    to{
+        transform: translateX(0);
+    }
+}
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+/*transition till error texten! */
+@keyframes blink {
+    0% {
+        color: red;
+    }
+    50% {
+        color: transparent;
+    }
+    100% {
+        color: red;
+    }
+}
+.error {
+    animation: blink 0.5s step-end infinite; /* Blinkar med 0.5s intervaller */
 }
